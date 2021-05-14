@@ -1,0 +1,1 @@
+web: gunicorn ship_inventory:app --preload --timeout 60

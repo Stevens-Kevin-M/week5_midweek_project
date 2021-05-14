@@ -11,6 +11,8 @@ from flask_sqlalchemy import SQLAlchemy
 # CORS - Cross Origin Resource Sharing
 from flask_cors import CORS
 
+from ship_inventory.helpers import JSONEncoder
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
@@ -24,6 +26,8 @@ migrate = Migrate(app, root_db)
 login_manager.init_app(app)
 ma.init_app(app)
 CORS(app)
+
+app.json_encoder = JSONEncoder
 
 # Specifying a route for non-authorized users
 login_manager.login_view = 'signin' 
